@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chwaiha - Premium Iced Tea Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #4A5568;
+            background: #fefefe;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0057A2;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4A5568;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0057A2;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #BFEFE6 0%, #f0faf7 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="20" r="2" fill="%23C9BA7B" opacity="0.1"/><circle cx="80" cy="40" r="1.5" fill="%230057A2" opacity="0.15"/><circle cx="30" cy="60" r="1" fill="%23C9BA7B" opacity="0.2"/><circle cx="70" cy="80" r="2.5" fill="%230057A2" opacity="0.1"/></svg>') repeat;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: #2D3748;
+        }
+
+        .hero-text .highlight {
+            color: #0057A2;
+            position: relative;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #718096;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #0057A2;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 87, 162, 0.2);
+        }
+
+        .cta-button:hover {
+            background: #00468a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 87, 162, 0.3);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tea-glass {
+            width: 200px;
+            height: 300px;
+            background: linear-gradient(180deg, transparent 0%, rgba(191, 239, 230, 0.1) 30%, rgba(191, 239, 230, 0.3) 100%);
+            border: 3px solid #0057A2;
+            border-radius: 15px 15px 30px 30px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .tea-glass::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            height: 2px;
+            background: #0057A2;
+            opacity: 0.5;
+        }
+
+        .ice-cubes {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            right: 30px;
+            bottom: 30px;
+        }
+
+        .ice-cube {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 3px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .ice-cube:nth-child(1) { top: 20px; left: 20px; animation-delay: 0s; }
+        .ice-cube:nth-child(2) { top: 60px; right: 15px; animation-delay: 1s; }
+        .ice-cube:nth-child(3) { bottom: 40px; left: 25px; animation-delay: 2s; }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #2D3748;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #0057A2;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: #718096;
+            line-height: 1.8;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: #BFEFE6;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0, 87, 162, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: #0057A2;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2D3748;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #718096;
+            line-height: 1.6;
+        }
+
+        /* B2B Section */
+        .b2b {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #E6FFFA 0%, #B2F5EA 100%);
+            color: #2D3748;
+        }
+
+        .b2b .section-title {
+            color: #2D3748;
+        }
+
+        .b2b .section-title::after {
+            background: #C9BA7B;
+        }
+
+        .b2b-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .b2b-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4A5568;
+        }
+
+        .b2b-features {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            border: 1px solid rgba(201, 186, 123, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: #C9BA7B;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: #BFEFE6;
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 87, 162, 0.1);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: #0057A2;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-weight: 600;
+            color: #2D3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details p {
+            color: #718096;
+            line-height: 1.6;
+        }
+
+        .contact-details a {
+            color: #0057A2;
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #EDF2F7 0%, #E2E8F0 100%);
+            color: #4A5568;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        footer p {
+            color: #718096;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .b2b-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">Chwaiha</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#b2b">B2B Solutions</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Premium <span class="highlight">Iced Tea</span> Solutions</h1>
+                    <p>We specialize in high-quality raw materials and easy-to-prepare solutions for iced tea beverages. Your reliable partner for consistent taste and refreshing innovation.</p>
+                    <a href="#contact" class="cta-button">Get Started</a>
+                </div>
+                <div class="hero-visual">
+                    <div class="tea-glass">
+                        <div class="ice-cubes">
+                            <div class="ice-cube"></div>
+                            <div class="ice-cube"></div>
+                            <div class="ice-cube"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div>
+                    <h2 class="section-title">About Chwaiha</h2>
+                </div>
+                <div class="about-text">
+                    <p>At Chwaiha, we are passionate about tea—especially iced tea. We specialize in offering high-quality raw materials and easy-to-prepare solutions for iced tea beverages. Our mission is to make premium iced tea accessible and hassle-free for businesses across the region.</p>
+                    <br>
+                    <p>Whether you're a café, coffee shop, restaurant, or hospitality brand, Chwaiha is your reliable partner for consistent taste, smooth operations, and refreshing innovation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">What We Provide</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌿</div>
+                    <h3>Premium Raw Ingredients</h3>
+                    <p>High-quality tea leaves and natural ingredients sourced for exceptional iced tea preparations.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🍃</div>
+                    <h3>Customizable Iced Tea Blends</h3>
+                    <p>Seasonal and year-round blends tailored to your brand's unique taste profile and customer preferences.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Simple Preparation Solutions</h3>
+                    <p>Easy-to-use systems designed for speed and convenience, perfect for busy commercial environments.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏷️</div>
+                    <h3>Private Labeling Options</h3>
+                    <p>Exclusive branded solutions for businesses seeking to offer unique iced tea products under their own label.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="b2b" class="b2b">
+        <div class="container">
+            <h2 class="section-title">B2B Iced Tea Solutions</h2>
+            <div class="b2b-content">
+                <div class="b2b-text">
+                    <p>We work directly with coffee shops and hospitality businesses to help them serve high-quality iced tea effortlessly. Our team supports you with product selection, recipe development, and packaging customization—so you can focus on delighting your customers.</p>
+                </div>
+                <div class="b2b-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">📋</div>
+                        <div>
+                            <h4>Product Selection</h4>
+                            <p>Expert guidance on choosing the perfect blends for your business</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">👨‍🍳</div>
+                        <div>
+                            <h4>Recipe Development</h4>
+                            <p>Custom formulations tailored to your brand and customers</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📦</div>
+                        <div>
+                            <h4>Packaging Customization</h4>
+                            <p>Branded packaging solutions that reflect your business identity</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <div>
+                    <p style="font-size: 1.1rem; color: #718096; margin-bottom: 2rem;">For inquiries, orders, or partnership opportunities, we'd love to hear from you. Get in touch with our team to discover how Chwaiha can elevate your iced tea offerings.</p>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@chwaiha.com">info@chwaiha.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🏢</div>
+                        <div class="contact-details">
+                            <h4>UK Office</h4>
+                            <p><strong>Chwaiha Ltd</strong><br>
+                            71-75 Shelton Street<br>
+                            Covent Garden, London<br>
+                            WC2H 9JQ United Kingdom</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Chwaiha Ltd. All rights reserved. | Premium Iced Tea Solutions</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all service cards and feature items
+        document.querySelectorAll('.service-card, .feature-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
